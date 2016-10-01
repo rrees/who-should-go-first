@@ -1,6 +1,12 @@
+import Array
+
 import Html
 import Html.App
 import Html.Events
+
+import Random
+
+import Random.Array
 
 main =
     Html.App.beginnerProgram
@@ -10,23 +16,30 @@ main =
             update = update
         }
 
-type alias Model = String
+type alias Model =
+    {
+        message: String,
+        seed: Random.Seed
+    }
 
 type Message
     = NewMethod
 
-methods: List String
+methods: Array.Array String
 methods
-    = ["Height", "Shoe size", "Last birthday"]
+    = Array.fromList ["Height", "Shoe size", "Last birthday"]
+
+methodGenerator
+    = Random.map (\maybeMessage -> Maybe.withDefault model.message maybeMessage) (Random.Array.sample methods)
+
 
 model: Model
-model =
-    "Click me to see how to determine who goes first!"
+model = Model "Click me to see how to determine who goes first!" (Random.initialSeed 15000)
 
 update: Message -> Model -> Model
 update msg model
-    = Maybe.withDefault model (List.head methods)
+    = Model model.message model.seed
 
 view : Model -> Html.Html Message
 view model =
-    Html.p [Html.Events.onClick NewMethod] [ Html.text model]
+    Html.p [Html.Events.onClick NewMethod] [ Html.text model.message]

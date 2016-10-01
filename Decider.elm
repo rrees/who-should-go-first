@@ -29,17 +29,23 @@ methods: Array.Array String
 methods
     = Array.fromList ["Height", "Shoe size", "Last birthday"]
 
+defaultMessage
+    = "Click me to see how to determine who goes first!"
+
 methodGenerator
-    = Random.map (\maybeMessage -> Maybe.withDefault model.message maybeMessage) (Random.Array.sample methods)
+    = Random.map (\maybeMessage -> Maybe.withDefault defaultMessage maybeMessage) (Random.Array.sample methods)
 
 
 model: Model
-model = Model "Click me to see how to determine who goes first!" (Random.initialSeed 15000)
+model = Model defaultMessage (Random.initialSeed 15000)
 
 update: Message -> Model -> Model
 update msg model
-    = Model model.message model.seed
+    = let (message, seed)
+        = Random.step methodGenerator model.seed
+    in
+        Model message seed
 
 view : Model -> Html.Html Message
 view model =
-    Html.p [Html.Events.onClick NewMethod] [ Html.text model.message]
+    Html.div [Html.Events.onClick NewMethod] [Html.p [] [ Html.text model.message]]

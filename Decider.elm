@@ -3,10 +3,13 @@ import Array
 import Html
 import Html.App
 import Html.Events
+import Html.Attributes
 
 import Random
 
 import Random.Array
+
+import Ports
 
 main =
     Html.App.beginnerProgram
@@ -33,7 +36,7 @@ defaultMessage
     = "Click me to see how to determine who goes first!"
 
 methodGenerator
-    = Random.map (\maybeMessage -> Maybe.withDefault defaultMessage maybeMessage) (Random.Array.sample methods)
+    = Random.map ((Maybe.withDefault) defaultMessage) (Random.Array.sample methods)
 
 
 model: Model
@@ -48,4 +51,4 @@ update msg model
 
 view : Model -> Html.Html Message
 view model =
-    Html.div [Html.Events.onClick NewMethod] [Html.p [] [ Html.text model.message]]
+    Html.div [(Html.Attributes.class "decider"), (Html.Events.onClick NewMethod)] [Html.p [Html.Attributes.class "decider--messaage"] [ Html.text model.message]]

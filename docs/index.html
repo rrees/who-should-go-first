@@ -1,10 +1,30 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta charset="UTF8">
+		<style>
+			.decider {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				font-size: 10vh;
+			}
+			.decider--message {
+				margin: auto;
+			}
+		</style>
+	</head>
 
-<div id="decider-panel">
-</div>
+	<body>
+		<div id="decider-panel" class="panel">
+		</div>
 
-<script src="app.js"></script>
+		<script src="app.js"></script>
 
-<script>
-	var node = document.getElementById('decider-panel');
-	var app = Elm.Main.embed(node);
-</script>
+		<script>
+			var node = document.getElementById('decider-panel');
+			var app = Elm.Main.embed(node);
+		</script>
+	</body>
+</html>

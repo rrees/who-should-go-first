@@ -30,7 +30,14 @@ type Message
 
 methods: Array.Array String
 methods
-    = Array.fromList ["Height", "Shoe size", "Last birthday"]
+    = Array.fromList [
+        "Height",
+        "Shoe size",
+        "Last birthday",
+        "Postcode",
+        "Age",
+        "Hair length",
+        "Most recently ill"]
 
 defaultMessage
     = "Click me to see how to determine who goes first!"

@@ -40,7 +40,7 @@ methods
         "Most recently ill"]
 
 defaultMessage
-    = "Click me to see how to determine who goes first!"
+    = "Click here to see who goes first!"
 
 methodGenerator
     = Random.map ((Maybe.withDefault) defaultMessage) (Random.Array.sample methods)

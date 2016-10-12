@@ -9129,10 +9129,10 @@ var _elm_lang$html$Html_Events$Options = F2(
 
 var _user$project$Ports$seed = _elm_lang$core$Native_Platform.incomingPort('seed', _elm_lang$core$Json_Decode$int);
 
-var _user$project$Main$defaultMessage = 'Click me to see how to determine who goes first!';
+var _user$project$Main$defaultMessage = 'Click here to see who goes first!';
 var _user$project$Main$methods = _elm_lang$core$Array$fromList(
 	_elm_lang$core$Native_List.fromArray(
-		['Height', 'Shoe size', 'Last birthday']));
+		['Height', 'Shoe size', 'Last birthday', 'Postcode', 'Age', 'Hair length', 'Most recently ill']));
 var _user$project$Main$methodGenerator = A2(
 	_elm_lang$core$Random$map,
 	_elm_lang$core$Maybe$withDefault(_user$project$Main$defaultMessage),

@@ -37,7 +37,8 @@ methods
         "Postcode",
         "Age",
         "Hair length",
-        "Most recently ill"]
+        "Most recently ill",
+        "Closest upcoming birthday"]
 
 defaultMessage
     = "Click here to see who goes first!"

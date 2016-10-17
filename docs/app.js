@@ -9132,7 +9132,7 @@ var _user$project$Ports$seed = _elm_lang$core$Native_Platform.incomingPort('seed
 var _user$project$Main$defaultMessage = 'Click here to see who goes first!';
 var _user$project$Main$methods = _elm_lang$core$Array$fromList(
 	_elm_lang$core$Native_List.fromArray(
-		['Height', 'Shoe size', 'Last birthday', 'Postcode', 'Age', 'Hair length', 'Most recently ill']));
+		['Height', 'Shoe size', 'Last birthday', 'Postcode', 'Age', 'Hair length', 'Most recently ill', 'Closest upcoming birthday']));
 var _user$project$Main$methodGenerator = A2(
 	_elm_lang$core$Random$map,
 	_elm_lang$core$Maybe$withDefault(_user$project$Main$defaultMessage),

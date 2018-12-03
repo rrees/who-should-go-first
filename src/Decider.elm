@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Array
+import Browser
 import Html
 import Html.Events
 import Html.Attributes
@@ -10,17 +11,16 @@ import Ports
 
 
 main =
-    Html.program
+    Browser.sandbox
         {
             init = init
-            , view = view
             , update = update
-            , subscriptions = subscriptions
+            , view = view
         }
 
 
 type alias Model =
-    { message : String
+    { methodDescription : String
     , seed : Random.Seed
     }
 
@@ -50,18 +50,18 @@ defaultMessage =
 methodGenerator =
     Random.map ((Maybe.withDefault) defaultMessage) (Random.Array.sample methods)
 
-update : Message -> Model -> (Model, Cmd Message)
-update msg model =
+update : Message -> (Model, Cmd Message) -> (Model, Cmd Message)
+update msg (model, message) =
     let
-        ( message, seed ) =
+        ( methodDescription, seed ) =
             Random.step methodGenerator model.seed
     in
-        ((Model message seed), Cmd.none)
+        ((Model methodDescription seed), Cmd.none)
 
 
-view : Model -> Html.Html Message
-view model =
-    Html.div [ (Html.Attributes.class "decider"), (Html.Events.onClick NewMethod) ] [ Html.p [ Html.Attributes.class "decider--messaage" ] [ Html.text model.message ] ]
+view : (Model, Cmd Message) -> Html.Html Message
+view (model, msg) =
+    Html.div [ (Html.Attributes.class "decider"), (Html.Events.onClick NewMethod) ] [ Html.p [ Html.Attributes.class "decider--messaage" ] [ Html.text model.methodDescription ] ]
 
 init: (Model, Cmd Message)
 init =
